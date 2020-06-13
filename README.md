@@ -16,6 +16,6 @@ https://online.visual-paradigm.com/
 
       * inser_data.sql (Using this sql file it is able to load the data to database)
       
-      * pdn_warehouse.sql (this is the database geration sql script)
+      * warehouse_management.sql (this is the database geration sql script)
 
 * In the database script folder there another folder named data_source. It is the  sample data files which we generated. It is in the csv format. 
