@@ -28,17 +28,54 @@ SET time_zone = "+00:00";
 --------------------------------------
 
 --
--- Table structure for table `sm_buyer`
+-- Table structure for table `buyers`
 --
 
-CREATE TABLE `sm_buyer` (
+CREATE TABLE `buyers` (
   `id` bigint(20) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL
+  `type` ENUM('Retail','Wholesale') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_ID` bigint(20) NOT NULL,
+  `buyer_ID` bigint(20) DEFAULT NULL,
+  `product_ID` bigint(20) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sm_buyer`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) NOT NULL,
+  `date` datetime DEFAULT NULL,
+  `delivery_date` datetime DEFAULT NULL,
+  `delivery_status` varchar(255) DEFAULT NULL,
+  `late_delivery_status` varchar(255) DEFAULT NULL,
+  `order_type` varchar(255) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `buyer_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+
+
+
+
 
 --
 -- Table structure for table `sm_employee`
@@ -50,9 +87,8 @@ CREATE TABLE `sm_employee` (
   `name` varchar(255) DEFAULT NULL,
   `salary` varchar(255) DEFAULT NULL,
   `start_date` datetime DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL
+  `title` ENUM('Managers','Keepers','workers','Cleaners','Security') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
 
 --
