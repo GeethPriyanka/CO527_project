@@ -45,3 +45,14 @@ CREATE TABLE products (
 	FOREIGN KEY (supplier_ID) REFERENCES suppliers(supplier_ID),
 	FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID)
 );
+
+CREATE TABLE orders (
+	order_ID INT,
+	buyers_ID INT,
+	product_ID INT,
+	quantity INT NOT NULL,
+	PRIMARY KEY (order_ID),
+	FOREIGN KEY (order_ID) REFERENCES order_details(order_ID),
+	FOREIGN KEY (buyers_ID) REFERENCES buyers(buyer_ID),
+	FOREIGN KEY (product_ID) REFERENCES products(product_ID)
+);
