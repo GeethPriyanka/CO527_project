@@ -56,3 +56,31 @@ CREATE TABLE orders (
 	FOREIGN KEY (buyers_ID) REFERENCES buyers(buyer_ID),
 	FOREIGN KEY (product_ID) REFERENCES products(product_ID)
 );
+
+CREATE TABLE employee (
+	employee_ID INT NOT NULL,
+	warehouse_ID INT,
+	name VARCHAR(50) NOT NULL,
+	date_of_birth DATE NOT NULL,
+	salary DECIMAL(13,2) NOT NULL,
+	title ENUM('Managers','Keepers','workers','Cleaners','Security') NOT NULL,
+	start_date DATE NOT NULL,
+	PRIMARY KEY (employee_ID),
+	FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID)
+);
+
+CREATE TABLE section (
+	section_ID INT NOT NULL,
+	warehouse_ID INT,
+	coordinates VARCHAR(50) NOT NULL,
+	PRIMARY KEY (section_ID),
+	FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID)
+);
+
+CREATE TABLE rack (
+	rack_ID INT NOT NULL,
+	row_number INT NOT NULL,
+	Section_ID INT,
+	PRIMARY KEY (rack_ID),
+	FOREIGN KEY (Section_ID) REFERENCES section(section_ID)
+);
