@@ -41,9 +41,7 @@ CREATE TABLE products (
 	quantity INT NOT NULL,
 	product_type ENUM('Plastics','Glass','Furniture','Fabrics') NOT NULL,
 	brand VARCHAR(50) NOT NULL,
-	PRIMARY KEY (product_ID),
-	FOREIGN KEY (supplier_ID) REFERENCES suppliers(supplier_ID),
-	FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID)
+	PRIMARY KEY (product_ID)
 );
 
 CREATE TABLE orders (
@@ -51,10 +49,7 @@ CREATE TABLE orders (
 	buyers_ID INT,
 	product_ID INT,
 	quantity INT NOT NULL,
-	PRIMARY KEY (order_ID),
-	FOREIGN KEY (order_ID) REFERENCES order_details(order_ID),
-	FOREIGN KEY (buyers_ID) REFERENCES buyers(buyer_ID),
-	FOREIGN KEY (product_ID) REFERENCES products(product_ID)
+	PRIMARY KEY (order_ID)
 );
 
 CREATE TABLE employee (
@@ -65,22 +60,36 @@ CREATE TABLE employee (
 	salary DECIMAL(13,2) NOT NULL,
 	title ENUM('Managers','Keepers','workers','Cleaners','Security') NOT NULL,
 	start_date DATE NOT NULL,
-	PRIMARY KEY (employee_ID),
-	FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID)
+	PRIMARY KEY (employee_ID)
 );
 
 CREATE TABLE section (
 	section_ID INT NOT NULL,
 	warehouse_ID INT,
 	coordinates VARCHAR(50) NOT NULL,
-	PRIMARY KEY (section_ID),
-	FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID)
+	PRIMARY KEY (section_ID)
 );
 
 CREATE TABLE rack (
 	rack_ID INT NOT NULL,
 	row_number INT NOT NULL,
 	Section_ID INT,
-	PRIMARY KEY (rack_ID),
-	FOREIGN KEY (Section_ID) REFERENCES section(section_ID)
+	PRIMARY KEY (rack_ID)
 );
+
+
+
+
+
+ALTER TABLE products ADD FOREIGN KEY (supplier_ID) REFERENCES suppliers(supplier_ID);
+ALTER TABLE products ADD FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID);
+
+ALTER TABLE orders ADD FOREIGN KEY (order_ID) REFERENCES order_details(order_ID);
+ALTER TABLE orders ADD FOREIGN KEY (buyers_ID) REFERENCES buyers(buyer_ID);
+ALTER TABLE orders ADD FOREIGN KEY (product_ID) REFERENCES products(product_ID);
+
+ALTER TABLE employee ADD FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID);
+
+ALTER TABLE section ADD FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID);
+
+ALTER TABLE rack ADD FOREIGN KEY (Section_ID) REFERENCES section(section_ID);
