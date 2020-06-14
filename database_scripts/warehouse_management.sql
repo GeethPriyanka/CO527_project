@@ -81,6 +81,12 @@ CREATE TABLE rack (
 
 
 
+
+
+
+
+
+
 ALTER TABLE products ADD FOREIGN KEY (supplier_ID) REFERENCES suppliers(supplier_ID);
 ALTER TABLE products ADD FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID);
 
