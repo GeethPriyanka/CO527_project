@@ -79,23 +79,23 @@ CREATE TABLE rack (
 
 
 
-
-
-
-
-
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\buyers.csv" INTO TABLE buyers FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\orders.csv" INTO TABLE orders FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\order_details.csv" INTO TABLE order_details FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\products.csv" INTO TABLE products FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\suppliers.csv" INTO TABLE suppliers FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\warehouse.csv" INTO TABLE warehouse FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\section.csv" INTO TABLE section FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\rack.csv" INTO TABLE rack FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+LOAD DATA INFILE "F:\\work\\Onedrive\\Academic_work\\8th_SEM\\CO527\\project\\latest\\CO527_project\\database_scripts\\data_source\\employee.csv" INTO TABLE employee FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
 
 
 
 ALTER TABLE products ADD FOREIGN KEY (supplier_ID) REFERENCES suppliers(supplier_ID);
-ALTER TABLE products ADD FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID);
-
 ALTER TABLE orders ADD FOREIGN KEY (order_ID) REFERENCES order_details(order_ID);
 ALTER TABLE orders ADD FOREIGN KEY (buyers_ID) REFERENCES buyers(buyer_ID);
+ALTER TABLE products ADD FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID);
 ALTER TABLE orders ADD FOREIGN KEY (product_ID) REFERENCES products(product_ID);
-
 ALTER TABLE employee ADD FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID);
-
 ALTER TABLE section ADD FOREIGN KEY (warehouse_ID) REFERENCES warehouse(warehouse_ID);
-
 ALTER TABLE rack ADD FOREIGN KEY (Section_ID) REFERENCES section(section_ID);
